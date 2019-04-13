@@ -1,0 +1,50 @@
+<%= form_with(model: group, local: true) do |form| %>
+  <% if group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, "Название" %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :operation, "Операция" %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%#= form.number_field :operation %>
+    <%#= form.select :operation, options_for_select(Group.operations.values, selected: params[:operation]), class: 'form-control' %>
+    <%= form.select :operation, options_for_select(["сложение или вычитание", "умножение", "деление"], :selected => params[:operation], disabled: ["умножение", "деление"]), class: 'form-control' %>
+  </div>
+  
+
+  <div class="form-group">
+    <%= form.label :digits, "Количество цифр" %>
+    <%= form.number_field :digits, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :timer, "Время перехода" %>
+    <%= form.text_field :timer, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :total, "Количество номеров" %>
+    <%= form.number_field :total, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%#= form.label :sum %>
+    <%#= form.number_field :sum, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Создать", class: "btn btn-success btn-block" %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  operation: 1
+  digits: 1
+  timer: 1.5
+  total: 1
+  sum: 1
+
+two:
+  title: MyString
+  operation: 1
+  digits: 1
+  timer: 1.5
+  total: 1
+  sum: 1

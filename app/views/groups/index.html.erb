@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Список</h1>
+  </div>
+
+  <div class="col-sm-6 text-right">
+  <%= link_to new_group_path, class: 'btn btn-primary' do %>
+    Создать новая игра
+  <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover text-center">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Операция</th>
+        <th>Количество цифр</th>
+        <th>Время перехода</th>
+        <th>Количество номеров</th>
+        <!--<th>Sum</th>-->
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @groups.each do |group| %>
+        <tr>
+          <td><%= group.title %></td>
+          <td><%= set_operation(group) %></td>
+          <td><%= group.digits %></td>
+          <td><%= group.timer %></td>
+          <td><%= group.total %></td>
+          <!--<td><%#= group.sum %></td>-->
+          <td><%= link_to 'Начать', group_numbers_path(group.id), class: "btn btn-danger" %></td>
+          <td><%= link_to 'Show', group %></td>
+          <!--<td><%#= link_to 'Edit', edit_group_path(group) %></td>-->
+          <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
