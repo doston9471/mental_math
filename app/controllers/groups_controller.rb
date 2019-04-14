@@ -30,8 +30,8 @@ class GroupsController < ApplicationController
       if @group.save
         result = CreateNumbers.call(params: params, group: @group)
         if result.success?
-          format.html { redirect_to groups_url }
-          format.json { render result}
+          format.html { redirect_to groups_url, notice: 'Новая игра создано успешно!' }
+          format.json { render result, status: :created}
           # format.html { redirect_to @group, notice: 'Group was successfully created.' }
           # format.json { render :show, status: :created, location: @group }
         else

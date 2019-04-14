@@ -63,7 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'interactor', '~> 3.0'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails'
-
+gem 'devise', '~> 4.2'
 group :production do
   gem 'rails_12factor'
   gem 'pg'

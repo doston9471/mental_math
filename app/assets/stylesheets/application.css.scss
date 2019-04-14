@@ -14,6 +14,26 @@
  *= require_self
  */
  @import "bootstrap";
+// Fixes bootstrap nav-brand container overlap
+@include media-breakpoint-down(xs) {
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body > .container {
+  padding: 40px 15px 0;
+}
+
+body > .alert {
+  margin-bottom: 0;
+}
 
  #nums {
    h1 {

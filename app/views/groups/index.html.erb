@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-sm-6">
     <h1>Список</h1>
@@ -35,9 +34,9 @@
           <td><%= group.total %></td>
           <!--<td><%#= group.sum %></td>-->
           <td><%= link_to 'Начать', group_numbers_path(group.id), class: "btn btn-danger" %></td>
-          <td><%= link_to 'Show', group %></td>
+          <td><%= link_to 'Показать', group, class: "btn btn-info" %></td>
           <!--<td><%#= link_to 'Edit', edit_group_path(group) %></td>-->
-          <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Удалить', group, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-default" %></td>
         </tr>
       <% end %>
     </tbody>
