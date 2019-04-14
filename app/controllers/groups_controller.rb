@@ -1,10 +1,12 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  # before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :destroy]
+  before_action :authenticate_user!
 
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = current_user.groups.order("created_at DESC")
   end
 
   # GET /groups/1
@@ -18,14 +20,14 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-
+    @group.user_id = current_user.id
     respond_to do |format|
       if @group.save
         result = CreateNumbers.call(params: params, group: @group)
@@ -58,17 +60,18 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
-  def update
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { render :show, status: :ok, location: @group }
-      else
-        format.html { render :edit }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   @group.user_id = current_user.id
+  #   respond_to do |format|
+  #     if @group.update(group_params)
+  #       format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @group }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @group.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /groups/1
   # DELETE /groups/1.json
